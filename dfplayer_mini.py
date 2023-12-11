@@ -16,33 +16,20 @@ class DFPlayerMini:
     CMD_SET_VOLUME = 0x06
     CMD_SET_EQ = 0x07
     CMD_REPEAT_TRACK = 0x08
-    CMD_PLAYBACK_MODE = 0x08
-    CMD_SET_DAC = 0x17
-    CMD_PLAY_FOLDER_FILE = 0x0F
-    CMD_SHUFFLE_PLAY = 0x18
     CMD_SET_PLAYBACK_SRC = 0x09
     CMD_SLEEP_MODE = 0x0A
     CMD_WAKE_UP = 0x0B
     CMD_RESET = 0x0C
+    CMD_PLAY_FOLDER_FILE = 0x0F
+    CMD_VOLUME_ADJUST_SET = 0x10
+    CMD_REPEAT_PLAY = 0x11
+    CMD_PLAY_FOLDER = 0x17
+    CMD_SHUFFLE_PLAY = 0x18
     CMD_PLAY_ADVERT = 0x13
     CMD_STOP_ADVERT = 0x15
     CMD_STOP = 0x16
-    CMD_PLAY_FOLDER = 0x17
-    CMD_VOLUME_ADJUST_SET = 0x10
-    CMD_REPEAT_PLAY = 0x11
 
     # Feedback Types
-    FEEDBACK_CARD_INSERTED = 2
-    FEEDBACK_CARD_REMOVED = 3
-    FEEDBACK_CARD_ONLINE = 4
-    FEEDBACK_PLAY_FINISHED = 5
-    FEEDBACK_ERROR = 6
-    FEEDBACK_USB_INSERTED = 7
-    FEEDBACK_USB_REMOVED = 8
-    FEEDBACK_USB_ONLINE = 9
-    FEEDBACK_CARD_USB_ONLINE = 10
-    FEEDBACK_FEEDBACK = 11
-
     FEEDBACK_REPLY = 0x41
     FEEDBACK_ERROR = 0x40
     FEEDBACK_INIT_COMPLETE = 0x3F
@@ -58,6 +45,17 @@ class DFPlayerMini:
     FEEDBACK_TOTAL_TRACKS_FOLDER = 0x4E
     FEEDBACK_TOTAL_TRACKS = 0x4F
     FEEDBACK_TOTAL_FOLDERS = 0x50
+
+    # Specific Feedback Command Codes for Track Finished and Device Status
+    TRACK_FINISHED_UDISK = 0x3C  # U-Disk track finished
+    TRACK_FINISHED_TF = 0x3D     # TF Card track finished
+    DEVICE_STATUS = 0x3A         # Device status (insertion, removal)
+
+    # Event Parameters for Device Status (Used with DEVICE_STATUS)
+    DEVICE_USB_INSERTED = 0x01   # USB inserted
+    DEVICE_TF_INSERTED = 0x02    # TF card inserted
+    DEVICE_USB_REMOVED = 0x01    # USB removed
+    DEVICE_TF_REMOVED = 0x02     # TF card removed
 
     # Error Codes
     ERROR_BUSY = 0x01
@@ -88,7 +86,6 @@ class DFPlayerMini:
     MODE_FOLDER_REPEAT = 1
     MODE_SINGLE_REPEAT = 2
     MODE_RANDOM = 3
-
 
     # Initialization: Setting up serial communication.
 
